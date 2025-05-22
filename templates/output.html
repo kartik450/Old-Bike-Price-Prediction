@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Predicted Price</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(-45deg, #000000, #1e3c72, #2a5298, #000000);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 60px;
+      margin-bottom: 20px;
+      animation: zoomIn 1s ease-out;
+    }
+
+    .price-box {
+      font-size: 80px;
+      background: linear-gradient(90deg, #00fff0, #00c3ff, #006eff, #00fff0);
+      background-size: 600% 600%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glowingText 5s linear infinite, fadeInUp 1s ease-in-out;
+    }
+
+    p {
+      font-size: 24px;
+      color: #ddd;
+      margin-top: 30px;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes glowingText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(60px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .home-btn {
+      margin-top: 40px;
+      padding: 12px 30px;
+      background-color: #00c3ff;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      color: black;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .home-btn:hover {
+      background-color: #008ecf;
+    }
+  </style>
+</head>
+<body>
+
+  <h1><i class="fas fa-coins"></i> Predicted Bike Price</h1>
+
+  <div class="price-box">
+    ₹ {{ prediction }} /-
+  </div>
+
+  <p>Your bike’s estimated market price based on input features.</p>
+
+  <form action="{{ url_for('home') }}">
+    <button class="home-btn"><i class="fas fa-arrow-left"></i> Go Back</button>
+  </form>
+
+</body>
+</html>
